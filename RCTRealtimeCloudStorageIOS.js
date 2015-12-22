@@ -156,7 +156,7 @@ class tableRef{
 	}
 	
 	containsString(item, value){
-		containsString(item, value, this.sId, this.tId);
+		storage.containsString(item, value, this.sId, this.tId);
 		return this;
 	}
 
