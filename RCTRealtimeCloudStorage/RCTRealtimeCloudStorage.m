@@ -210,7 +210,7 @@ RCT_EXPORT_METHOD(beginsWithString: (NSString*) item value:(NSString*) value sto
     [tableRef beginsWithString:item value:value];
 }
 
-RCT_EXPORT_METHOD(beginsWithNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(beginsWithNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef beginsWithNumber:item value:value];
@@ -221,7 +221,7 @@ RCT_EXPORT_METHOD(betweenString: (NSString*) item beginValue:(NSString*) beginVa
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef betweenString:item beginValue:beginValue endValue:endValue];
 }
-RCT_EXPORT_METHOD(betweenNumber: (NSString*) item beginValue:(NSNumber*) beginValue endValue:(NSNumber*) endValue storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(betweenNumber: (NSString*) item beginValue:(nonnull NSNumber*) beginValue endValue:(nonnull NSNumber*) endValue storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef betweenNumber:item beginValue:beginValue endValue:endValue];
@@ -232,7 +232,7 @@ RCT_EXPORT_METHOD(containsString: (NSString*) item value:(NSString*) value stora
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef containsString:item value:value];
 }
-RCT_EXPORT_METHOD(containsNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(containsNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef containsNumber:item value:value];
@@ -242,7 +242,7 @@ RCT_EXPORT_METHOD(equalsString: (NSString*) item value:(NSString*) value storage
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef equalsString:item value:value];
 }
-RCT_EXPORT_METHOD(equalsNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(equalsNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef equalsNumber:item value:value];
@@ -252,7 +252,7 @@ RCT_EXPORT_METHOD(greaterEqualString: (NSString*) item value:(NSString*) value s
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef greaterEqualString:item value:value];
 }
-RCT_EXPORT_METHOD(greaterEqualNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(greaterEqualNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef greaterEqualNumber:item value:value];
@@ -262,7 +262,7 @@ RCT_EXPORT_METHOD(greaterThanString: (NSString*) item value:(id) value storage:(
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef greaterThanString:item value:value];
 }
-RCT_EXPORT_METHOD(greaterThanNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(greaterThanNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef greaterThanNumber:item value:value];
@@ -272,7 +272,7 @@ RCT_EXPORT_METHOD(lesserEqualString: (NSString*) item value:(NSString*) value st
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef lesserEqualString:item value:value];
 }
-RCT_EXPORT_METHOD(lesserEqualNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(lesserEqualNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef lesserEqualNumber:item value:value];
@@ -282,7 +282,7 @@ RCT_EXPORT_METHOD(lesserThanString: (NSString*) item value:(NSString*) value sto
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef lesserThanString:item value:value];
 }
-RCT_EXPORT_METHOD(lesserThanNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(lesserThanNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef lesserThanNumber:item value:value];
@@ -292,7 +292,7 @@ RCT_EXPORT_METHOD(notContainsString: (NSString*) item value:(NSString*) value st
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef notContainsString:item value:value];
 }
-RCT_EXPORT_METHOD(notContainsNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(notContainsNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef notContainsNumber:item value:value];
@@ -302,7 +302,7 @@ RCT_EXPORT_METHOD(notEqualString: (NSString*) item value:(NSString*) value stora
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef notEqualString:item value:value];
 }
-RCT_EXPORT_METHOD(notEqualNumber: (NSString*) item value:(NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
+RCT_EXPORT_METHOD(notEqualNumber: (NSString*) item value:(nonnull NSNumber*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef notEqualNumber:item value:value];
