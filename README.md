@@ -28,8 +28,9 @@ If you want to check a ready to run example using this SDK check the real-time s
 
 ##Importing RCTRealtimeCloudStorageIOS to your project
 
-	var module = require('RCTRealtimeCloudStorageIOS');
-	var RCTRealtimeCloudStorage = new module();
+	import { NativeModules } from 'react-native';
+	var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+	var storage = NativeModules.RealtimeCloudStorage;
 
 ## Documentation
 
