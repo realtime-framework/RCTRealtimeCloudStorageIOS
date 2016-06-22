@@ -8,7 +8,7 @@ If you are a developer, you can use Realtime Cloud Storage to create database ta
 
 * Create a new react-native project. [Check react-native getting started](http://facebook.github.io/react-native/docs/getting-started.html#content)
 
-* On the terminal, go to PROJECT_DIR/node_modules/react-native.
+* On the terminal, go to PROJECT_DIR.
 
 * Execute
 
