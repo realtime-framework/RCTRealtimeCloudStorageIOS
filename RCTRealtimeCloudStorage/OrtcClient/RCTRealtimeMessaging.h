@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OrtcClient.h"
 #import "RCTBridgeModule.h"
-#import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
 
 @interface RCTRealtimeMessaging : NSObject<OrtcClientDelegate, RCTBridgeModule>
