@@ -117,10 +117,10 @@ RCT_EXPORT_METHOD(getTables:(NSString*)pid)
     StorageRef *storageref = [_storageRefs objectForKey:pid];
     [storageref getTables:^(TableSnapshot *success) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-getTables", pid]
-                                                     body:success.val];
+                                                        body:success.val];
     } error:^(NSError *error) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-getTables", pid]
-                                                     body:@{@"error":error.description}];
+                                                        body:@{@"error":error.description}];
     }];
 }
 
@@ -128,10 +128,10 @@ RCT_EXPORT_METHOD(isAuthenticated: (NSString*) aAuthenticationToken ide:(NSStrin
     StorageRef *storageref = [_storageRefs objectForKey:pid];
     [storageref isAuthenticated:aAuthenticationToken success:^(Boolean success) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-isAuthenticated", pid]
-                                                     body:@{@"success": [NSNumber numberWithBool:success]}];
+                                                        body:@{@"success": [NSNumber numberWithBool:success]}];
     } error:^(NSError *error) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-isAuthenticated", pid]
-                                                     body:@{@"error": error.description}];
+                                                        body:@{@"error": error.description}];
     }];
 }
 
@@ -166,7 +166,7 @@ RCT_EXPORT_METHOD(onReconnected:(NSString*)pid){
     StorageRef *storageref = [_storageRefs objectForKey:pid];
     [storageref onReconnected:^(StorageRef *storage) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-onReconnected", pid]
-                                                     body:@{}];
+                                                        body:@{}];
     }];
 }
 
@@ -174,7 +174,7 @@ RCT_EXPORT_METHOD(onReconnecting:(NSString*)pid){
     StorageRef *storageref = [_storageRefs objectForKey:pid];
     [storageref onReconnecting:^(StorageRef *storage) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-onReconnecting", pid]
-                                                     body:@{}];
+                                                        body:@{}];
     }];
 }
 
@@ -225,7 +225,7 @@ RCT_EXPORT_METHOD(betweenNumber: (NSString*) item beginValue:(nonnull NSNumber*)
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     [tableRef betweenNumber:item beginValue:beginValue endValue:endValue];
-
+    
 }
 RCT_EXPORT_METHOD(containsString: (NSString*) item value:(NSString*) value storage:(NSString*)sId table:(NSString*)table){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
@@ -386,7 +386,7 @@ RCT_EXPORT_METHOD(update: (NSString*) aProvisionType provisionLoad:(NSString*) a
 }
 
 
-RCT_EXPORT_METHOD(item: (NSString*) primaryKey storage:(NSString*)sId table:(NSString*)table item:(NSString*)iId){
+RCT_EXPORT_METHOD(item: (NSString*) primaryKey storage:(NSString*)sId table:(NSString*)table item:(NSNumber* _Nonnull)iId){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     
@@ -398,7 +398,7 @@ RCT_EXPORT_METHOD(item: (NSString*) primaryKey storage:(NSString*)sId table:(NSS
     [_itemRefs setObject:item forKey: iId];
 }
 
-RCT_EXPORT_METHOD(itemCustom: (NSString*) primaryKey secondaryKey:(NSString*) secondaryKey storage:(NSString*)sId table:(NSString*)table item:(NSString*)iId){
+RCT_EXPORT_METHOD(itemCustom: (NSString*) primaryKey secondaryKey:(NSString*) secondaryKey storage:(NSString*)sId table:(NSString*)table item:(NSNumber* _Nonnull)iId){
     NSMutableDictionary *sRefs = [_tableRefs objectForKey:sId];
     TableRef *tableRef = [sRefs objectForKey:table];
     
@@ -406,7 +406,7 @@ RCT_EXPORT_METHOD(itemCustom: (NSString*) primaryKey secondaryKey:(NSString*) se
     if (!item) {
         item = [tableRef item:primaryKey secondaryKey:secondaryKey];
     }
-
+    
     [_itemRefs setObject:item forKey: iId];
 }
 
@@ -430,7 +430,7 @@ RCT_EXPORT_METHOD(getItems:(NSString*)sId table:(NSString*)table){
     [tableRef getItems:^(ItemSnapshot *item) {
         if (item) {
             [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-getItems", table]
-                                                         body:item.val];
+                                                            body:item.val];
         }else
         {
             [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-getItems", table]
@@ -439,7 +439,7 @@ RCT_EXPORT_METHOD(getItems:(NSString*)sId table:(NSString*)table){
         
     } error:^(NSError *error) {
         [self.bridge.eventDispatcher sendDeviceEventWithName:[NSString stringWithFormat:@"%@-getItems", table]
-                                                     body:@{@"error": error.localizedDescription}];
+                                                        body:@{@"error": error.localizedDescription}];
     }];
     
 }
@@ -554,7 +554,7 @@ RCT_EXPORT_METHOD(disablePushNotifications:(NSString*)sId table:(NSString*)table
 
 //=========================================================
 
-RCT_EXPORT_METHOD(itemRefdel:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefdel:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item del:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -563,7 +563,7 @@ RCT_EXPORT_METHOD(itemRefdel:(NSString*)iId success:(RCTResponseSenderBlock)succ
     }];
 }
 
-RCT_EXPORT_METHOD(itemRefget:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefget:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item get:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -572,7 +572,7 @@ RCT_EXPORT_METHOD(itemRefget:(NSString*)iId success:(RCTResponseSenderBlock)succ
     }];
 }
 
-RCT_EXPORT_METHOD(itemRefset: (NSDictionary*)attributes item:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefset: (NSDictionary*)attributes item:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item set: attributes success:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -581,7 +581,7 @@ RCT_EXPORT_METHOD(itemRefset: (NSDictionary*)attributes item:(NSString*)iId succ
     }];
 }
 
-RCT_EXPORT_METHOD(itemRefincr:(NSString *)property withValue:(NSInteger)value item:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefincr:(NSString *)property withValue:(NSInteger)value item:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item incr:property withValue:value success:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -589,7 +589,7 @@ RCT_EXPORT_METHOD(itemRefincr:(NSString *)property withValue:(NSInteger)value it
         errorC(@[error.localizedDescription]);
     }];
 }
-RCT_EXPORT_METHOD(itemRefincrCustom:(NSString *)property item:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefincrCustom:(NSString *)property item:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item incr:property success:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -597,7 +597,7 @@ RCT_EXPORT_METHOD(itemRefincrCustom:(NSString *)property item:(NSString*)iId suc
         errorC(@[error.localizedDescription]);
     }];
 }
-RCT_EXPORT_METHOD(itemRefdecr:(NSString *)property withValue:(NSInteger)value item:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefdecr:(NSString *)property withValue:(NSInteger)value item:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item decr:property withValue:value success:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -606,7 +606,7 @@ RCT_EXPORT_METHOD(itemRefdecr:(NSString *)property withValue:(NSInteger)value it
     }];
 }
 
-RCT_EXPORT_METHOD(itemRefdecrCustom:(NSString *)property item:(NSString*)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
+RCT_EXPORT_METHOD(itemRefdecrCustom:(NSString *)property item:(NSNumber* _Nonnull)iId success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)errorC){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item decr:property success:^(ItemSnapshot *itemRef) {
         success(@[itemRef.val]);
@@ -616,7 +616,7 @@ RCT_EXPORT_METHOD(itemRefdecrCustom:(NSString *)property item:(NSString*)iId suc
 }
 
 
-RCT_EXPORT_METHOD(itemRefon: (NSString*) eventType item:(NSString*)iId callback:(RCTResponseSenderBlock)callback){
+RCT_EXPORT_METHOD(itemRefon: (NSString*) eventType item:(NSNumber* _Nonnull)iId callback:(RCTResponseSenderBlock)callback){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item on:[self convertEventType:eventType] callback:^(ItemSnapshot *itemRef) {
         callback(@[itemRef.val]);
@@ -624,14 +624,14 @@ RCT_EXPORT_METHOD(itemRefon: (NSString*) eventType item:(NSString*)iId callback:
 }
 
 
-RCT_EXPORT_METHOD(itemRefoff: (NSString*) eventType item:(NSString*)iId){
+RCT_EXPORT_METHOD(itemRefoff: (NSString*) eventType item:(NSNumber* _Nonnull)iId){
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item off:[self convertEventType:eventType]];
 }
 
 
 
-RCT_EXPORT_METHOD(itemRefonce: (NSString*) eventType item:(NSString*)iId callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(itemRefonce: (NSString*) eventType item:(NSNumber* _Nonnull)iId callback:(RCTResponseSenderBlock)callback)
 {
     ItemRef *item = [_itemRefs objectForKey:iId];
     [item once:[self convertEventType:eventType] callback:^(ItemSnapshot *itemRef) {
@@ -639,13 +639,13 @@ RCT_EXPORT_METHOD(itemRefonce: (NSString*) eventType item:(NSString*)iId callbac
     }];
 }
 
-RCT_EXPORT_METHOD(itemRefenablePushNotifications:(NSString*)iId){
-ItemRef *item = [_itemRefs objectForKey:iId];
+RCT_EXPORT_METHOD(itemRefenablePushNotifications:(NSNumber* _Nonnull)iId){
+    ItemRef *item = [_itemRefs objectForKey:iId];
     [item enablePushNotifications];
 }
 
-RCT_EXPORT_METHOD(itemRefdisablePushNotifications:(NSString*)iId){
-ItemRef *item = [_itemRefs objectForKey:iId];
+RCT_EXPORT_METHOD(itemRefdisablePushNotifications:(NSNumber* _Nonnull)iId){
+    ItemRef *item = [_itemRefs objectForKey:iId];
     [item enablePushNotifications];
 }
 

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "RealTimeCloudStorage.h"
 #import "RCTBridgeModule.h"
-#import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
 
 @interface RCTRealtimeCloudStorage : NSObject<RCTBridgeModule>
