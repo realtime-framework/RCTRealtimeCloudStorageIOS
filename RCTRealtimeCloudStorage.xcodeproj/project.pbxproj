@@ -22,7 +22,6 @@
 		57B209E51ADEA1E8004297D4 /* StorageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B209D51ADEA1E8004297D4 /* StorageRef.m */; };
 		57B209E61ADEA1E8004297D4 /* TableRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B209D61ADEA1E8004297D4 /* TableRef.m */; };
 		57B209E71ADEA1E8004297D4 /* TableSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B209D71ADEA1E8004297D4 /* TableSnapshot.m */; };
-		57B209E91ADEA205004297D4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B209E81ADEA205004297D4 /* libicucore.dylib */; };
 		57B20A1F1ADEE5EF004297D4 /* Balancer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B20A181ADEE5EF004297D4 /* Balancer.m */; };
 		57B20A201ADEE5EF004297D4 /* OrtcClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B20A1A1ADEE5EF004297D4 /* OrtcClient.m */; };
 		57B20A221ADEE5EF004297D4 /* RealtimePushAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B20A1E1ADEE5EF004297D4 /* RealtimePushAppDelegate.m */; };
@@ -78,7 +77,6 @@
 		57B209D51ADEA1E8004297D4 /* StorageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageRef.m; sourceTree = "<group>"; };
 		57B209D61ADEA1E8004297D4 /* TableRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRef.m; sourceTree = "<group>"; };
 		57B209D71ADEA1E8004297D4 /* TableSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSnapshot.m; sourceTree = "<group>"; };
-		57B209E81ADEA205004297D4 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		57B20A171ADEE5EF004297D4 /* Balancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Balancer.h; sourceTree = "<group>"; };
 		57B20A181ADEE5EF004297D4 /* Balancer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Balancer.m; sourceTree = "<group>"; };
 		57B20A191ADEE5EF004297D4 /* OrtcClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrtcClient.h; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57B209E91ADEA205004297D4 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +107,6 @@
 		57B2097E1ADE9E5F004297D4 = {
 			isa = PBXGroup;
 			children = (
-				57B209E81ADEA205004297D4 /* libicucore.dylib */,
 				57B209891ADE9E5F004297D4 /* RCTRealtimeCloudStorage */,
 				57B209961ADE9E60004297D4 /* RCTRealtimeCloudStorageTests */,
 				57B209881ADE9E5F004297D4 /* Products */,
